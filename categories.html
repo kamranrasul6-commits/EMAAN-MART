@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop by Categories - Emaan Mart">
+    <title>Categories - Emaan Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    <a href="index.html" class="text-2xl font-bold text-gray-800">Emaan<span class="text-green-500">Mart</span></a>
+                </div>
+
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500 transition">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-green-500 transition">Shop</a>
+                    <a href="categories.html" class="text-green-500 font-bold">Categories</a>
+                    <a href="about.html" class="text-gray-700 hover:text-green-500 transition">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-500 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">Shop by Category</h1>
+            <p class="text-green-100 mt-2">Browse our products by category</p>
+        </div>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Electronics -->
+            <a href="shop.html" onclick="filterCategory('electronics'); return false;" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer group">
+                <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center group-hover:scale-110 transition">
+                    <i class="fas fa-laptop text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Electronics</h3>
+                    <p class="text-gray-600 mb-4">Laptops, phones, tablets, and more</p>
+                    <div class="flex items-center text-green-500 font-semibold">
+                        Browse <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Accessories -->
+            <a href="shop.html" onclick="filterCategory('accessories'); return false;" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer group">
+                <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center group-hover:scale-110 transition">
+                    <i class="fas fa-mobile text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Accessories</h3>
+                    <p class="text-gray-600 mb-4">Chargers, cables, cases, and more</p>
+                    <div class="flex items-center text-green-500 font-semibold">
+                        Browse <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Fashion -->
+            <a href="shop.html" onclick="filterCategory('fashion'); return false;" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer group">
+                <div class="h-48 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center group-hover:scale-110 transition">
+                    <i class="fas fa-shirt text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Fashion</h3>
+                    <p class="text-gray-600 mb-4">Clothing, shoes, and accessories</p>
+                    <div class="flex items-center text-green-500 font-semibold">
+                        Browse <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Home & Kitchen -->
+            <a href="shop.html" onclick="filterCategory('home'); return false;" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer group">
+                <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center group-hover:scale-110 transition">
+                    <i class="fas fa-home text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Home & Kitchen</h3>
+                    <p class="text-gray-600 mb-4">Furniture, kitchenware, and decor</p>
+                    <div class="flex items-center text-green-500 font-semibold">
+                        Browse <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Beauty & Personal Care -->
+            <a href="shop.html" onclick="filterCategory('beauty'); return false;" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer group">
+                <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center group-hover:scale-110 transition">
+                    <i class="fas fa-spa text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Beauty & Personal Care</h3>
+                    <p class="text-gray-600 mb-4">Skincare, makeup, and wellness</p>
+                    <div class="flex items-center text-green-500 font-semibold">
+                        Browse <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Grocery -->
+            <a href="shop.html" onclick="filterCategory('grocery'); return false;" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer group">
+                <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center group-hover:scale-110 transition">
+                    <i class="fas fa-shopping-basket text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Grocery</h3>
+                    <p class="text-gray-600 mb-4">Food, spices, and essentials</p>
+                    <div class="flex items-center text-green-500 font-semibold">
+                        Browse <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Featured in Each Category -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-3">Popular Products</h2>
+                <p class="text-gray-600">Best-selling items from each category</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" id="featuredByCategory">
+                <!-- Will be loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2026 Emaan Mart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923356267708" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 hover:bg-green-600 transition shadow-lg animate-bounce" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        function filterCategory(category) {
+            localStorage.setItem('filterCategory', category);
+        }
+
+        function loadFeaturedByCategory() {
+            const categories = ['electronics', 'accessories', 'fashion', 'home', 'beauty'];
+            const container = document.getElementById('featuredByCategory');
+            let html = '';
+
+            categories.forEach(cat => {
+                const categoryProducts = products.filter(p => p.category === cat);
+                if (categoryProducts.length > 0) {
+                    const topProduct = categoryProducts[0];
+                    html += `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                            <div class="relative h-40">
+                                <img src="${topProduct.image}" alt="${topProduct.name}" class="w-full h-full object-cover">
+                                <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-semibold">-${topProduct.discount}%</div>
+                            </div>
+                            <div class="p-3">
+                                <h4 class="font-semibold text-gray-800 text-sm line-clamp-2">${topProduct.name}</h4>
+                                <p class="text-green-500 font-bold text-sm mt-1">₨${topProduct.price.toLocaleString()}</p>
+                                <button onclick="addToCart(${topProduct.id})" class="w-full mt-2 bg-green-500 text-white py-1 rounded text-xs hover:bg-green-600 transition">Add</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            container.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadFeaturedByCategory);
+    </script>
+</body>
+</html>

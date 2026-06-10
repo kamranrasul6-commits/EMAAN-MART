@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FAQ - Frequently Asked Questions - Emaan Mart">
+    <title>FAQ - Emaan Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    <a href="index.html" class="text-2xl font-bold text-gray-800">Emaan<span class="text-green-500">Mart</span></a>
+                </div>
+
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500 transition">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-green-500 transition">Shop</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-500 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">Frequently Asked Questions</h1>
+            <p class="text-green-100 mt-2">Find answers to common questions</p>
+        </div>
+    </div>
+
+    <!-- FAQ Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Search -->
+        <div class="mb-12">
+            <input type="text" id="faqSearch" placeholder="Search FAQ..." class="w-full px-6 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" onkeyup="filterFAQ()">
+        </div>
+
+        <!-- FAQ Items -->
+        <div id="faqContainer" class="space-y-4">
+            <!-- Shopping -->
+            <div class="faq-category">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Shopping</h2>
+                
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">How do I place an order?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Browse our products, add items to your cart, proceed to checkout, fill in your information, select a payment method, and confirm your order. You'll receive an order confirmation email immediately.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">We accept Cash on Delivery (COD), Bank Transfer, and JazzCash/EasyPaisa mobile money transfers. Choose your preferred method at checkout.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Is my payment information secure?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Yes, we use industry-standard encryption and security protocols to protect your personal and payment information. Your data is never shared with third parties.</p>
+                </div>
+            </div>
+
+            <!-- Delivery & Shipping -->
+            <div class="faq-category">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 mt-12">Delivery & Shipping</h2>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">What is the delivery time?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Most orders are delivered within 2-5 business days depending on your location in Pakistan. Express delivery options may be available in major cities.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">What is the shipping cost?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Shipping is completely free for all orders, regardless of the order value or location within Pakistan.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Can I track my order?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Yes, you can track your order status using the tracking link sent to your email. Visit our <a href="order-tracking.html" class="text-green-500 hover:underline">order tracking page</a> for more details.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Do you deliver to all cities in Pakistan?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Yes, we deliver to all major cities and many smaller towns across Pakistan. Enter your area code during checkout to confirm delivery availability.</p>
+                </div>
+            </div>
+
+            <!-- Returns & Refunds -->
+            <div class="faq-category">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 mt-12">Returns & Refunds</h2>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">What is your return policy?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">We offer a 7-day return policy from the date of delivery. Items must be unused and in original packaging. Contact our customer service for return instructions.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">How long does a refund take?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Refunds are processed within 5-7 business days after we receive the returned item. For COD orders, we may adjust your next purchase credit.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Can I exchange a product?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Yes, we offer free exchanges for defective or damaged products within 7 days of delivery. Contact us with your order details and product photos.</p>
+                </div>
+            </div>
+
+            <!-- Account & Profile -->
+            <div class="faq-category">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 mt-12">Account & Profile</h2>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Do I need an account to shop?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">No, you can checkout as a guest. However, creating an account allows you to track orders and save your preferences for a faster checkout experience.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">How do I reset my password?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Click on "Forgot Password" on the login page, enter your email, and we'll send you a password reset link. Follow the link to create a new password.</p>
+                </div>
+            </div>
+
+            <!-- Products & Quality -->
+            <div class="faq-category">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 mt-12">Products & Quality</h2>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Are your products authentic?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Yes, all our products are 100% authentic. We source directly from authorized distributors and manufacturers. If you have concerns about authenticity, contact us immediately.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">Do you offer warranties on products?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Yes, most electronics and appliances come with manufacturer warranties. Warranty details are provided with the product. We also offer extended warranty options for select items.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">How do I know which products are in stock?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Product availability is shown on each product page. Items marked as "In Stock" are available for immediate dispatch. Pre-order items have specified delivery timelines.</p>
+                </div>
+            </div>
+
+            <!-- Contact & Support -->
+            <div class="faq-category">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 mt-12">Contact & Support</h2>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">What are your customer service hours?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Our customer service team is available Monday to Friday, 9:00 AM to 6:00 PM (PST). We respond to emails within 24 hours.</p>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-md p-6 mb-4">
+                    <button class="w-full text-left flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-gray-800">How can I report a problem with my order?</h3>
+                        <i class="fas fa-chevron-down text-green-500 transition"></i>
+                    </button>
+                    <p class="faq-answer text-gray-600 mt-4 hidden">Please contact us immediately via phone, email, or WhatsApp with your order number and a description of the issue. We'll resolve it promptly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2026 Emaan Mart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923356267708" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 hover:bg-green-600 transition shadow-lg animate-bounce" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        function toggleFAQ(button) {
+            const answer = button.parentElement.querySelector('.faq-answer');
+            const icon = button.querySelector('i');
+            answer.classList.toggle('hidden');
+            icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        function filterFAQ() {
+            const searchTerm = document.getElementById('faqSearch').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

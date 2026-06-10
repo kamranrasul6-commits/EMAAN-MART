@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track Your Order - Emaan Mart">
+    <title>Order Tracking - Emaan Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    <a href="index.html" class="text-2xl font-bold text-gray-800">Emaan<span class="text-green-500">Mart</span></a>
+                </div>
+
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500 transition">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-green-500 transition">Shop</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-500 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">Track Your Order</h1>
+            <p class="text-green-100 mt-2">Monitor your delivery status in real-time</p>
+        </div>
+    </div>
+
+    <!-- Tracking Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Search Form -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Find Your Order</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Order ID / Email</label>
+                    <input type="text" id="searchInput" placeholder="e.g., EM1234567890" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                <div class="flex items-end">
+                    <button onclick="searchOrder()" class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition font-bold">
+                        <i class="fas fa-search mr-2"></i>
+                        Track Order
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Order (if exists) -->
+        <div id="recentOrder" class="hidden bg-white rounded-lg shadow-md p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Recent Order</h3>
+            <div id="recentOrderContent"></div>
+        </div>
+
+        <!-- Order Details (shown after search) -->
+        <div id="orderDetails" class="hidden">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Sample Orders -->
+        <div class="bg-gray-100 rounded-lg shadow-md p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Sample Order Tracking</h3>
+            <p class="text-gray-600 mb-6">Here's an example of how order tracking works. Use order ID: <span class="font-bold text-green-500">EM1234567890</span></p>
+
+            <!-- Order Status Timeline -->
+            <div class="space-y-6">
+                <!-- Status 1 -->
+                <div class="flex items-start">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-green-500 text-white flex-shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="text-lg font-bold text-gray-800">Order Confirmed</h4>
+                        <p class="text-gray-600">Your order has been received and confirmed</p>
+                        <p class="text-sm text-gray-500 mt-1">November 15, 2024 - 2:30 PM</p>
+                    </div>
+                </div>
+
+                <!-- Status 2 -->
+                <div class="flex items-start">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-green-500 text-white flex-shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="text-lg font-bold text-gray-800">Processing</h4>
+                        <p class="text-gray-600">We're preparing your order for shipment</p>
+                        <p class="text-sm text-gray-500 mt-1">November 15, 2024 - 4:15 PM</p>
+                    </div>
+                </div>
+
+                <!-- Status 3 -->
+                <div class="flex items-start">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-green-500 text-white flex-shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="text-lg font-bold text-gray-800">Shipped</h4>
+                        <p class="text-gray-600">Your package has been handed to the courier</p>
+                        <p class="text-sm text-gray-500 mt-1">November 16, 2024 - 9:00 AM</p>
+                    </div>
+                </div>
+
+                <!-- Status 4 -->
+                <div class="flex items-start">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-500 text-white flex-shrink-0">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="text-lg font-bold text-gray-800">In Transit</h4>
+                        <p class="text-gray-600">Your package is on its way to you</p>
+                        <p class="text-sm text-gray-500 mt-1">Expected delivery: November 18, 2024</p>
+                    </div>
+                </div>
+
+                <!-- Status 5 (Not yet) -->
+                <div class="flex items-start opacity-50">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300 text-white flex-shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="text-lg font-bold text-gray-800">Out for Delivery</h4>
+                        <p class="text-gray-600">Your package is out for delivery today</p>
+                        <p class="text-sm text-gray-500 mt-1">Coming soon...</p>
+                    </div>
+                </div>
+
+                <!-- Status 6 (Not yet) -->
+                <div class="flex items-start opacity-50">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-300 text-white flex-shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="text-lg font-bold text-gray-800">Delivered</h4>
+                        <p class="text-gray-600">Your order has been successfully delivered</p>
+                        <p class="text-sm text-gray-500 mt-1">Coming soon...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Information -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 pt-8 border-t">
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Order Information</h4>
+                    <p class="text-gray-600 text-sm">Order ID: <span class="font-semibold">EM1234567890</span></p>
+                    <p class="text-gray-600 text-sm">Order Date: <span class="font-semibold">Nov 15, 2024</span></p>
+                    <p class="text-gray-600 text-sm">Total Amount: <span class="font-semibold">₨5,499</span></p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Delivery Address</h4>
+                    <p class="text-gray-600 text-sm">123 Main Street, Karachi, Pakistan</p>
+                    <p class="text-gray-600 text-sm">Recipient: Ahmed Hassan</p>
+                    <p class="text-gray-600 text-sm">Phone: +92-3XX-XXXXXXX</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Section -->
+        <div class="mt-12 bg-green-50 border-2 border-green-200 rounded-lg p-8">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Need Help with Your Order?</h3>
+            <p class="text-gray-600 mb-6">If you have any issues tracking your order or have questions, please don't hesitate to contact us.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="tel:+923356267708" class="flex items-center space-x-3 text-green-600 hover:text-green-700 font-semibold">
+                    <i class="fas fa-phone text-xl"></i>
+                    <span>+92-335-6267708</span>
+                </a>
+                <a href="https://wa.me/923356267708" target="_blank" class="flex items-center space-x-3 text-green-600 hover:text-green-700 font-semibold">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>WhatsApp Us</span>
+                </a>
+                <a href="contact.html" class="flex items-center space-x-3 text-green-600 hover:text-green-700 font-semibold">
+                    <i class="fas fa-envelope text-xl"></i>
+                    <span>Contact Form</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2026 Emaan Mart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923356267708" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 hover:bg-green-600 transition shadow-lg animate-bounce" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        function searchOrder() {
+            const searchInput = document.getElementById('searchInput').value;
+            alert('Order tracking search for: ' + searchInput + '\n\nTry using: EM1234567890\n\nThis is a demo order tracking system.');
+        }
+
+        // Load recent order if available
+        function loadRecentOrder() {
+            const lastOrder = localStorage.getItem('lastOrder');
+            if (lastOrder) {
+                const order = JSON.parse(lastOrder);
+                const recentOrderDiv = document.getElementById('recentOrder');
+                const recentOrderContent = document.getElementById('recentOrderContent');
+
+                recentOrderContent.innerHTML = `
+                    <div class="space-y-4">
+                        <p class="text-gray-600"><span class="font-semibold">Order ID:</span> ${order.id}</p>
+                        <p class="text-gray-600"><span class="font-semibold">Customer:</span> ${order.customerName}</p>
+                        <p class="text-gray-600"><span class="font-semibold">Order Date:</span> ${order.orderDate}</p>
+                        <p class="text-gray-600"><span class="font-semibold">Status:</span> <span class="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">${order.status}</span></p>
+                        <p class="text-gray-600"><span class="font-semibold">Total Amount:</span> ₨${order.total.toLocaleString()}</p>
+                        <button onclick="alert('Your order status has been updated. Thank you for shopping with Emaan Mart!')" class="mt-4 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition font-semibold">
+                            View Full Details
+                        </button>
+                    </div>
+                `;
+                recentOrderDiv.classList.remove('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadRecentOrder);
+    </script>
+</body>
+</html>

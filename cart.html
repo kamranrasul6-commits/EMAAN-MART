@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shopping Cart - Emaan Mart">
+    <title>Shopping Cart - Emaan Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    <a href="index.html" class="text-2xl font-bold text-gray-800">Emaan<span class="text-green-500">Mart</span></a>
+                </div>
+
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500 transition">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-green-500 transition">Shop</a>
+                    <a href="categories.html" class="text-gray-700 hover:text-green-500 transition">Categories</a>
+                    <a href="about.html" class="text-gray-700 hover:text-green-500 transition">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-500 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="wishlist.html" class="text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="far fa-heart"></i>
+                    </a>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">Shopping Cart</h1>
+            <p class="text-green-100 mt-2">Review and checkout your items</p>
+        </div>
+    </div>
+
+    <!-- Cart Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div id="cartItems" class="space-y-4">
+                    <!-- Cart items will be loaded here -->
+                </div>
+
+                <!-- Empty Cart Message -->
+                <div id="emptyCart" class="hidden text-center py-12 bg-white rounded-lg shadow">
+                    <i class="fas fa-shopping-cart text-gray-400 text-6xl mb-4"></i>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Your Cart is Empty</h2>
+                    <p class="text-gray-600 mb-6">Add some products to get started!</p>
+                    <a href="shop.html" class="inline-block bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition font-semibold">Continue Shopping</a>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div id="orderSummary" class="bg-white rounded-lg shadow-md p-6 sticky top-20">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Order Summary</h3>
+                    
+                    <div class="space-y-3 mb-4 pb-4 border-b">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal</span>
+                            <span>₨<span id="subtotal">0</span></span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Shipping</span>
+                            <span class="text-green-500 font-semibold">Free</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Tax (0%)</span>
+                            <span>₨<span id="tax">0</span></span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between text-xl font-bold text-gray-800 mb-6">
+                        <span>Total</span>
+                        <span class="text-green-500">₨<span id="total">0</span></span>
+                    </div>
+
+                    <a href="checkout.html" class="block w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition font-bold text-center mb-3">Proceed to Checkout</a>
+                    <a href="shop.html" class="block w-full bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition font-bold text-center">Continue Shopping</a>
+
+                    <!-- Promo Code -->
+                    <div class="mt-6 pt-6 border-t">
+                        <h4 class="font-semibold text-gray-800 mb-3">Promo Code</h4>
+                        <div class="flex gap-2">
+                            <input type="text" id="promoCode" placeholder="Enter code" class="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <button onclick="applyPromo()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition font-semibold">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About Emaan Mart</h3>
+                    <p class="text-gray-400">Quality products at affordable prices.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><a href="index.html" class="hover:text-green-500 transition">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-green-500 transition">Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><i class="fas fa-phone text-green-500"></i> +92-335-6267708</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+                    <div class="flex gap-3">
+                        <a href="#" class="text-gray-400 hover:text-green-500 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-500 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2026 Emaan Mart. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923356267708" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 hover:bg-green-600 transition shadow-lg animate-bounce" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        function loadCart() {
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '';
+                emptyCart.classList.remove('hidden');
+                updateOrderSummary();
+                return;
+            }
+
+            emptyCart.classList.add('hidden');
+            cartItems.innerHTML = cart.map(item => `
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex gap-4">
+                        <div class="w-24 h-24 flex-shrink-0">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover rounded">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">${item.name}</h3>
+                                    <p class="text-sm text-gray-500">${item.category}</p>
+                                </div>
+                                <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 transition">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="text-green-500 font-bold">₨${item.price.toLocaleString()}</div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" class="px-2 py-1 border border-gray-300 rounded hover:bg-gray-100">-</button>
+                                    <input type="number" value="${item.quantity}" onchange="updateQuantity(${item.id}, this.value)" class="w-12 text-center border border-gray-300 rounded py-1" min="1">
+                                    <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" class="px-2 py-1 border border-gray-300 rounded hover:bg-gray-100">+</button>
+                                </div>
+                                <div class="font-bold text-gray-800">₨${(item.price * item.quantity).toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            updateOrderSummary();
+        }
+
+        function updateOrderSummary() {
+            const subtotal = getCartTotal();
+            const tax = 0;
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = subtotal.toLocaleString();
+            document.getElementById('tax').textContent = tax.toLocaleString();
+            document.getElementById('total').textContent = total.toLocaleString();
+        }
+
+        function applyPromo() {
+            const promoCode = document.getElementById('promoCode').value;
+            if (promoCode.toUpperCase() === 'SAVE10') {
+                showNotification('Promo code applied! 10% discount');
+                alert('Promo code applied! 10% discount will be applied at checkout.');
+            } else {
+                showNotification('Invalid promo code');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCart();
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

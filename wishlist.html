@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Wishlist - Emaan Mart">
+    <title>Wishlist - Emaan Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    <a href="index.html" class="text-2xl font-bold text-gray-800">Emaan<span class="text-green-500">Mart</span></a>
+                </div>
+
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500 transition">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-green-500 transition">Shop</a>
+                    <a href="categories.html" class="text-gray-700 hover:text-green-500 transition">Categories</a>
+                    <a href="about.html" class="text-gray-700 hover:text-green-500 transition">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-500 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">My Wishlist</h1>
+            <p class="text-green-100 mt-2">Your saved items and favorites</p>
+        </div>
+    </div>
+
+    <!-- Wishlist Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div id="wishlistContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Wishlist items will be loaded here -->
+        </div>
+
+        <!-- Empty Wishlist -->
+        <div id="emptyWishlist" class="hidden text-center py-12 bg-white rounded-lg shadow">
+            <i class="fas fa-heart text-gray-400 text-6xl mb-4"></i>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Your Wishlist is Empty</h2>
+            <p class="text-gray-600 mb-6">Add items to your wishlist for later!</p>
+            <a href="shop.html" class="inline-block bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition font-semibold">Continue Shopping</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2026 Emaan Mart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923356267708" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 hover:bg-green-600 transition shadow-lg animate-bounce" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        function loadWishlist() {
+            const container = document.getElementById('wishlistContainer');
+            const emptyWishlist = document.getElementById('emptyWishlist');
+
+            if (wishlist.length === 0) {
+                container.innerHTML = '';
+                emptyWishlist.classList.remove('hidden');
+                return;
+            }
+
+            emptyWishlist.classList.add('hidden');
+            const wishlistProducts = wishlist.map(id => products.find(p => p.id === id)).filter(p => p);
+
+            container.innerHTML = wishlistProducts.map(product => `
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                    <div class="relative overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold">-${product.discount}%</div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-sm text-gray-500 mb-1">${product.category}</p>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">${product.name}</h3>
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <p class="text-lg font-bold text-green-500">₨${product.price.toLocaleString()}</p>
+                                <p class="text-sm text-gray-500 line-through">₨${(product.price / (1 - product.discount/100)).toLocaleString()}</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="addToCart(${product.id})" class="flex-1 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition font-semibold">
+                                <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                            </button>
+                            <button onclick="toggleWishlist(${product.id})" class="px-3 py-2 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadWishlist();
+            updateWishlistCount();
+        });
+    </script>
+</body>
+</html>

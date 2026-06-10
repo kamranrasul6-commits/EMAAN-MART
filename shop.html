@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop all products at Emaan Mart - Quality products at affordable prices">
+    <title>Shop - Emaan Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-leaf text-green-500 text-2xl"></i>
+                    <a href="index.html" class="text-2xl font-bold text-gray-800">Emaan<span class="text-green-500">Mart</span></a>
+                </div>
+
+                <div class="hidden md:flex flex-1 mx-8">
+                    <input type="text" id="searchInput" placeholder="Search products..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-500 transition">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-green-500 transition">Shop</a>
+                    <a href="categories.html" class="text-gray-700 hover:text-green-500 transition">Categories</a>
+                    <a href="about.html" class="text-gray-700 hover:text-green-500 transition">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-green-500 transition">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="wishlist.html" class="text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="far fa-heart"></i>
+                        <span class="text-xs bg-green-500 text-white rounded-full px-2 py-1 wishlist-count" style="display:none;">0</span>
+                    </a>
+                    <a href="cart.html" class="relative text-gray-700 hover:text-green-500 transition text-lg">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-green-500 to-green-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">Our Products</h1>
+            <p class="text-green-100 mt-2">Browse our complete collection of quality products</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Filters -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-20">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Filters</h3>
+
+                    <!-- Category Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">Category</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="all" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter" checked>
+                                <span class="text-gray-600">All Categories</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="electronics" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter">
+                                <span class="text-gray-600">Electronics</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="accessories" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter">
+                                <span class="text-gray-600">Accessories</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="fashion" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter">
+                                <span class="text-gray-600">Fashion</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="home" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter">
+                                <span class="text-gray-600">Home & Kitchen</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="beauty" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter">
+                                <span class="text-gray-600">Beauty</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="grocery" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 category-filter">
+                                <span class="text-gray-600">Grocery</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="mb-6 border-t pt-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">Price Range</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="0-500" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 price-filter">
+                                <span class="text-gray-600">Under ₨500</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="500-1000" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 price-filter">
+                                <span class="text-gray-600">₨500 - ₨1,000</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="1000-2000" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 price-filter">
+                                <span class="text-gray-600">₨1,000 - ₨2,000</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="2000-5000" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 price-filter">
+                                <span class="text-gray-600">₨2,000 - ₨5,000</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="5000+" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 price-filter">
+                                <span class="text-gray-600">Above ₨5,000</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
+                    <div class="border-t pt-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">Rating</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="4.5" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 rating-filter">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="text-gray-600 text-sm ml-1">4.5+ Stars</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="4" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 rating-filter">
+                                <span class="text-yellow-400 text-sm">★★★★☆</span>
+                                <span class="text-gray-600 text-sm ml-1">4+ Stars</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" value="3.5" onchange="applyFilters()" class="mr-2 w-4 h-4 text-green-500 rating-filter">
+                                <span class="text-yellow-400 text-sm">★★★☆☆</span>
+                                <span class="text-gray-600 text-sm ml-1">3.5+ Stars</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="resetFilters()" class="w-full mt-6 bg-gray-200 text-gray-800 py-2 rounded-lg hover:bg-gray-300 transition font-semibold">Reset Filters</button>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="md:col-span-3">
+                <!-- Sort Bar -->
+                <div class="flex justify-between items-center mb-6">
+                    <p class="text-gray-600"><span id="productCount">30</span> products found</p>
+                    <select onchange="applySorting(this.value)" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="">Sort By</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                        <option value="newest">Newest First</option>
+                        <option value="name">A to Z</option>
+                    </select>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <!-- No Products Message -->
+                <div id="noProducts" class="hidden text-center py-12">
+                    <i class="fas fa-inbox text-gray-400 text-6xl mb-4"></i>
+                    <p class="text-gray-600 text-lg">No products found matching your criteria.</p>
+                    <button onclick="resetFilters()" class="mt-4 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About Emaan Mart</h3>
+                    <p class="text-gray-400">Quality products at affordable prices. Your trusted online shopping destination in Pakistan.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><a href="index.html" class="hover:text-green-500 transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-green-500 transition">About Us</a></li>
+                        <li><a href="faq.html" class="hover:text-green-500 transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><i class="fas fa-phone text-green-500"></i> <a href="tel:+923356267708">+92-335-6267708</a></li>
+                        <li><i class="fas fa-map-marker text-green-500"></i> Pakistan</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+                    <div class="flex gap-3">
+                        <a href="#" class="text-gray-400 hover:text-green-500 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-500 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-500 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2026 Emaan Mart. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923356267708" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 hover:bg-green-600 transition shadow-lg animate-bounce" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        let filteredProducts = [...products];
+        let currentSort = '';
+
+        function createProductCard(product) {
+            return `
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden group">
+                    <div class="relative overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold">-${product.discount}%</div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-sm text-gray-500 mb-1">${product.category}</p>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">${product.name}</h3>
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <p class="text-lg font-bold text-green-500">₨${product.price.toLocaleString()}</p>
+                                <p class="text-sm text-gray-500 line-through">₨${(product.price / (1 - product.discount/100)).toLocaleString()}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-yellow-400 text-sm">
+                                ${[...Array(5)].map((_, i) => `<i class="fas fa-star ${i < Math.floor(product.rating) ? '' : 'opacity-30'}"></i>`).join('')}
+                                <span class="text-gray-600 ml-1">(${product.reviews})</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="addToCart(${product.id})" class="flex-1 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition font-semibold">
+                                <i class="fas fa-shopping-cart mr-2"></i>Add
+                            </button>
+                            <button onclick="toggleWishlist(${product.id})" class="px-3 py-2 border border-green-500 text-green-500 rounded hover:bg-green-500 hover:text-white transition">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadAllProducts() {
+            filteredProducts = [...products];
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const noProducts = document.getElementById('noProducts');
+            const productCount = document.getElementById('productCount');
+
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '';
+                noProducts.classList.remove('hidden');
+                productCount.textContent = '0';
+            } else {
+                grid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+                noProducts.classList.add('hidden');
+                productCount.textContent = filteredProducts.length;
+            }
+        }
+
+        function applyFilters() {
+            const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+            const selectedPrices = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
+            const selectedRatings = Array.from(document.querySelectorAll('.rating-filter:checked')).map(cb => parseFloat(cb.value));
+
+            filteredProducts = products.filter(product => {
+                let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes('all') || selectedCategories.includes(product.category);
+                
+                let priceMatch = selectedPrices.length === 0;
+                if (selectedPrices.length > 0) {
+                    priceMatch = selectedPrices.some(range => {
+                        if (range === '0-500') return product.price <= 500;
+                        if (range === '500-1000') return product.price > 500 && product.price <= 1000;
+                        if (range === '1000-2000') return product.price > 1000 && product.price <= 2000;
+                        if (range === '2000-5000') return product.price > 2000 && product.price <= 5000;
+                        if (range === '5000+') return product.price > 5000;
+                        return false;
+                    });
+                }
+
+                let ratingMatch = selectedRatings.length === 0 || selectedRatings.some(rating => product.rating >= rating);
+
+                return categoryMatch && priceMatch && ratingMatch;
+            });
+
+            if (currentSort) {
+                applySorting(currentSort);
+            } else {
+                renderProducts();
+            }
+        }
+
+        function applySorting(sortBy) {
+            currentSort = sortBy;
+            let sorted = [...filteredProducts];
+
+            switch(sortBy) {
+                case 'price-low':
+                    sorted.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    sorted.sort((a, b) => b.price - a.price);
+                    break;
+                case 'rating':
+                    sorted.sort((a, b) => b.rating - a.rating);
+                    break;
+                case 'newest':
+                    sorted.sort((a, b) => b.id - a.id);
+                    break;
+                case 'name':
+                    sorted.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+            }
+
+            filteredProducts = sorted;
+            renderProducts();
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('.category-filter, .price-filter, .rating-filter').forEach(cb => cb.checked = false);
+            document.querySelector('.category-filter').checked = true;
+            currentSort = '';
+            loadAllProducts();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAllProducts);
+    </script>
+</body>
+</html>
